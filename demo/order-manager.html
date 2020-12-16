@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>冰酒后台管理</title>
+    <link rel="stylesheet" href="./layui-v2.5.7/layui/css/layui.css">
+    <script src="./layui-v2.5.7/layui/layui.js"></script>
+
+    <script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function () {
+            var element = layui.element;
+
+            //…
+        });
+    </script>
+    <script>
+        //Demo
+        layui.use('form', function () {
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
+
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <!-- 顶部导航栏 -->
+        <div class="layui-header">
+            <div class="layui-logo">冰酒后台管理</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        商户
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">帮助手册</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退出</a></li>
+            </ul>
+        </div>
+        <!-- 侧边导航栏 -->
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">冰酒管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="./ice-wine-stock-qurey.html">库存查询</a></dd>
+                            <dd><a href="./ice-wine-stock-manager.html">冰酒出入库</a></dd>
+                            <dd><a href="./ice-wine-manager.html">管理冰酒种类</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">订单管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="./order-qurey.html">查询订单</a></dd>
+                            <dd><a href="./order-manager.html">管理订单</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">客户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="./client-qurey.html">查询客户</a></dd>
+                            <dd><a href="./client-manager.html">管理客户</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <div class="layui-tab layui-tab-card">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">添加新订单</li>
+                        <li>修改/删除订单</li>
+                    </ul>
+                    <div class="layui-tab-content" style="height: 600px;">
+                        <div class="layui-tab-item layui-show">
+                            <form class="layui-form layui-form-pane" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单日期</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单状态</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">客户编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">冰酒编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">是否送货</label>
+                                    <div class="layui-input-block">
+                                      <input type="radio" name="deliver" value="是" title="是" checked>
+                                      <input type="radio" name="deliver" value="否" title="否">
+                                    </div>
+                                  </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">送货地址</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">配送距离</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单金额</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-tab-item">
+                            <form class="layui-form" action="">
+                                <div class="layui-fluid">
+                                    <div class="layui-row">
+                                        <div class="layui-col-md5">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">查询关键词</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="title" required lay-verify="required"
+                                                        placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md3">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">查询方式</label>
+                                                <div class="layui-input-block">
+                                                    <select name="city" lay-verify="required">
+                                                        <option value="0">按编号</option>
+                                                        <option value="1">按名称</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="layui-form-item">
+                                                <div class="layui-input-block">
+                                                    <button class="layui-btn" lay-submit lay-filter="formDemo">点击查询</button>
+                                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="layui-form layui-form-pane" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单日期</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单状态</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">客户编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">冰酒编号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">是否送货</label>
+                                    <div class="layui-input-block">
+                                      <input type="radio" name="deliver" value="是" title="是" checked>
+                                      <input type="radio" name="deliver" value="否" title="否">
+                                    </div>
+                                  </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">送货地址</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">配送距离</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单金额</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-row layui-input-block">
+                                        <div class="layui-col-md9">
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        </div>
+                                        <div class="layui-col-md3 ">
+                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">删除该订单</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © icewine.cc - 冰酒管理系统
+        </div>
+    </div>
+</body>
+
+</html>
