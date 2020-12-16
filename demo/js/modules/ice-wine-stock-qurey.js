@@ -10,13 +10,13 @@ layui.use('table', function(){
       ,cols: [[ //表头
         {field: 'wineId', title: '酒品编号', sort: true, fixed: 'left'}
         ,{field: 'wineName', title: '酒品名称', sort: true}
-        ,{field: 'wineType', title: '酒品类型'}
+        ,{field: 'wineType', title: '酒品类型', sort: true}
         ,{field: 'stockAmount', title: '库存', sort: true}
         ,{field: 'wineOrigin', title: '产地产区'} 
-        ,{field: 'wineProductDate', title: '生产日期'}
+        ,{field: 'wineProductDate', title: '生产日期', sort: true}
         ,{field: 'winePurchasePrice', title: '进购价格', sort: true}
         ,{field: 'wineBasicSalePrice', title: '基础售价', sort: true}
-        ,{field: 'wineCapacity', title: '单瓶容量'}
+        ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
         ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
       ]]
       ,data: [{
