@@ -7,7 +7,7 @@ layui.use('table', function(){
       //,url: "##" //数据接口
       ,page: true //开启分页
       ,cols: [[ //表头
-        {field: 'wineId', title: '酒品编号', sort: true, fixed: 'left'}
+        {field: 'wineId', title: '酒品编号', sort: true}
         ,{field: 'wineName', title: '酒品名称', sort: true}
         ,{field: 'wineType', title: '酒品类型', sort: true}
         ,{field: 'stockAmount', title: '库存', sort: true}
@@ -16,7 +16,7 @@ layui.use('table', function(){
         ,{field: 'winePurchasePrice', title: '进购价格', sort: true}
         ,{field: 'wineBasicSalePrice', title: '基础售价', sort: true}
         ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
-        ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true},
+        ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
         ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
       ]]
       ,data: [{
@@ -570,5 +570,31 @@ layui.use('table', function(){
         "wineCapacity": "300ml",
         "wineAlcoholDegree": "17"
     }]
+    });
+
+    //监听行工具事件
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        //console.log(obj)
+        if(obj.event === 'del'){
+        layer.confirm('真的删除行么', function(index){
+            // ***************删除行********************
+            obj.del();
+            console.log('操作：删除行' + JSON.stringify(obj.data));
+            layer.close(index);
+            //******************************************
+        });
+        } else if(obj.event === 'edit'){
+            //***************编辑************** */
+            layer.prompt({
+                formType: 2
+                ,value: JSON.stringify(data,null,'\t')
+            }, function(value, index){
+                console.log('操作：更新行' + JSON.stringify(obj.data));
+                obj.update(JSON.parse(value));
+                layer.close(index);
+            //******************************* */
+            });
+        }
     });
   });

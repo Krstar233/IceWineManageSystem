@@ -7,7 +7,7 @@ layui.use('table', function(){
       //,url: "##" //数据接口
       ,page: true //开启分页
       ,cols: [[ //表头
-        {field: 'CusName', title: '姓名', sort: true, fixed: 'left'}
+        {field: 'CusName', title: '姓名', sort: true}
         ,{field: 'CusID', title: '编号', sort: true}
         ,{field: 'CusType', title: '客户类型', sort: true}
         ,{field: 'CusTel', title: '电话'}
@@ -108,4 +108,31 @@ layui.use('table', function(){
         "CusCost": "1700"
     }]
     });
-  });
+
+    //监听行工具事件
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        //console.log(obj)
+        if(obj.event === 'del'){
+        layer.confirm('真的删除行么', function(index){
+            // ***************删除行********************
+            obj.del();
+            console.log('操作：删除行' + JSON.stringify(obj.data));
+            layer.close(index);
+            //******************************************
+        });
+        } else if(obj.event === 'edit'){
+            //***************编辑************** */
+            layer.prompt({
+                formType: 2
+                ,value: JSON.stringify(data,null,'\t')
+            }, function(value, index){
+                console.log('操作：更新行' + JSON.stringify(obj.data));
+                obj.update(JSON.parse(value));
+                layer.close(index);
+            //******************************* */
+            });
+        }
+    });
+});
+

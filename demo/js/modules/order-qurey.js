@@ -283,5 +283,30 @@ layui.use('table', function(){
         "deliveryamount": ""
     }]
     });
-    
+
+    //监听行工具事件
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        //console.log(obj)
+        if(obj.event === 'del'){
+        layer.confirm('真的删除行么', function(index){
+            // ***************删除行********************
+            obj.del();
+            console.log('操作：删除行' + JSON.stringify(obj.data));
+            layer.close(index);
+            //******************************************
+        });
+        } else if(obj.event === 'edit'){
+            //***************编辑************** */
+            layer.prompt({
+                formType: 2
+                ,value: JSON.stringify(data,null,'\t')
+            }, function(value, index){
+                console.log('操作：更新行' + JSON.stringify(obj.data));
+                obj.update(JSON.parse(value));
+                layer.close(index);
+            //******************************* */
+            });
+        }
+    });
   });
