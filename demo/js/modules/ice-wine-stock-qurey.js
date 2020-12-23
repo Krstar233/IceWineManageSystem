@@ -3,8 +3,7 @@ layui.use('table', function(){
     //第一个实例
     table.render({
       elem: '#demo'
-      ,height: 580
-      ,cellMinWidth: 80
+      ,cellMinWidth: 100
       //,url: "##" //数据接口
       ,page: true //开启分页
       ,cols: [[ //表头
@@ -17,7 +16,8 @@ layui.use('table', function(){
         ,{field: 'winePurchasePrice', title: '进购价格', sort: true}
         ,{field: 'wineBasicSalePrice', title: '基础售价', sort: true}
         ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
-        ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
+        ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true},
+        ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
       ]]
       ,data: [{
         "wineId": "00001",

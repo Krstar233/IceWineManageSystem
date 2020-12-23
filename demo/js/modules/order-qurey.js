@@ -3,12 +3,11 @@ layui.use('table', function(){
     //第一个实例
     table.render({
       elem: '#demo'
-      ,height: 580
-      ,cellMinWidth: 80
+      ,cellMinWidth: 100
       //,url: "##" //数据接口
       ,page: true //开启分页
       ,cols: [[ //表头
-        {field: 'ordernumber', title: '订单编号', sort: true, fixed: 'left'}
+        {field: 'ordernumber', title: '订单编号', sort: true}
         ,{field: 'orderdate', title: '订单日期', sort: true}
         ,{field: 'orderstatus', title: '订单状态'}
         ,{field: 'CusType', title: '客户类型', sort: true}
@@ -20,7 +19,8 @@ layui.use('table', function(){
         ,{field: 'deliveryLocation', title: '送货地址', sort: true}
         ,{field: 'deliverytime', title: '送货时间'}
         ,{field: 'deliveryamount', title: '送货金额', sort: true}
-      ]]
+        ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
+      ]] ,minWidth:80
       ,data: [{
         "ordernumber": "1",
         "orderdate": "20201201",

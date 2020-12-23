@@ -3,8 +3,7 @@ layui.use('table', function(){
     //第一个实例
     table.render({
       elem: '#demo'
-      ,height: 580
-      ,cellMinWidth: 80
+      ,cellMinWidth: 100
       //,url: "##" //数据接口
       ,page: true //开启分页
       ,cols: [[ //表头
@@ -13,7 +12,8 @@ layui.use('table', function(){
         ,{field: 'CusType', title: '客户类型', sort: true}
         ,{field: 'CusTel', title: '电话'}
         ,{field: 'CusAddr', title: '地址', sort: true}
-        ,{field: 'CusCost', title: '消费额', sort: true}
+        ,{field: 'CusCost', title: '消费额', sort: true},
+        ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
       ]]
       ,data: [{
         "CusName": "Krits",

@@ -29,7 +29,10 @@
             });
         });
     </script>
-
+    <script type="text/html" id="operation-bar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
 
 </head>
 
@@ -124,7 +127,7 @@
                         </div>
                     </div>
                 </form>
-                <table id="demo" lay-filter="test"></table>
+                <table id="demo" class="layui-hide" lay-filter="test"></table>
             </div>
         </div>
 
