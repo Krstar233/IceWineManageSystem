@@ -1,24 +1,21 @@
-document.write("<script language='javascript' src='./js/modules/jQuery.js'></script>");
+document.write("<script language='javascript' src='./js/modules/config.js'></script>");
 
-var baseUrl = "";
-
-function deleteDataById(type, id){
+function iceWineStockManage(form_data){
     $.ajax({
         //请求方式
         type : "POST",
         //请求的媒体类型
         contentType: "application/json;charset=UTF-8",
         //请求地址
-        url : baseUrl+"/api/delete_data.php",
+        url : baseUrl+"/api/ice-wine-stock.php",
         //数据，json字符串
         data : {
-            "type": type,
-            "id": id
+            "data": form_data
         },
         //请求成功
         success : function(result) {
             if (result.code == 0){
-                layer.msg("数据删除失败!\n错误信息："+result.msg);
+                layer.msg("更新失败!\n错误信息："+ result.msg);
             }
             console.log(result.msg);
         },

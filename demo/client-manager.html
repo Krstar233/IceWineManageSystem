@@ -7,7 +7,7 @@
     <title>冰酒后台管理</title>
     <link rel="stylesheet" href="./layui-v2.5.7/layui/css/layui.css">
     <script src="./layui-v2.5.7/layui/layui.js"></script>
-
+    
     <script>
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function () {
@@ -16,13 +16,32 @@
             //…
         });
     </script>
+    <script src="./js/modules/client-manager.js"></script>
     <script>
         //Demo
         layui.use('form', function () {
             var form = layui.form;
             //监听提交
-            form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+            form.on('submit(addClientForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                // 添加客户信息
+                clientUpdate(0, data.field);
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(updateClientForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                // 修改客户信息
+                clientUpdate(1, data.field);
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(deleteClientForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                // 删除客户信息
+                deleteDataById("client", data.field.CusID);
                 return false;
             });
         });
@@ -96,48 +115,48 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">姓名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusID" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">类型</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusType" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">电话</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusTel" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">地址</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusAddr" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">消费额</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusCost" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button class="layui-btn" lay-submit lay-filter="addClientForm">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
@@ -182,53 +201,53 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">姓名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusID" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">类型</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusType" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">电话</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusTel" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">地址</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusAddr" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">消费额</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusCost" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-row layui-input-block">
                                         <div class="layui-col-md9">
-                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                                            <button class="layui-btn" lay-submit lay-filter="updateClientForm">立即修改</button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
                                         <div class="layui-col-md3 ">
-                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">删除该客户</button>
+                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="deleteClientForm">删除该客户</button>
                                         </div>
                                     </div>
                                 </div>

@@ -16,14 +16,34 @@
             //…
         });
     </script>
+    <script src="./js/modules/ice-wine-manager.js"></script>
     <script>
         //Demo
         layui.use('form', function () {
             var form = layui.form;
 
             //监听提交
-            form.on('submit(formDemo)', function (data) {
+            form.on('submit(addWineForm)', function (data) {
                 layer.msg(JSON.stringify(data.field));
+                // 添加信息
+                addWine(data);
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(updateWineForm)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                // 修改信息
+                updateWine(data.field)
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(deleteWineForm)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
+                // 删除信息
+                deleteDataById("wine", data.field.wineId);
                 return false;
             });
         });
@@ -99,69 +119,69 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品类型</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineType" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">产地产区</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineOrigin" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">生产日期</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineProductDate" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">进购价格</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="winePurchasePrice" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">基础售价</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineBasicSalePrice" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">单瓶容量</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineCapacity" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒精度数</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineAlcoholDegree" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button class="layui-btn" lay-submit lay-filter="addWineForm">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
@@ -206,74 +226,74 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒品类型</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineType" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">产地产区</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineOrigin" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">生产日期</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineProductDate" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">进购价格</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="winePurchasePrice" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">基础售价</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineBasicSalePrice" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">单瓶容量</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineCapacity" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">酒精度数</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineAlcoholDegree" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-row layui-input-block">
                                         <div class="layui-col-md9">
-                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                                            <button class="layui-btn" lay-submit lay-filter="updateWineForm">立即修改</button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
                                         <div class="layui-col-md3 ">
-                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">删除该类冰酒</button>
+                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="deleteWineForm">删除该类冰酒</button>
                                         </div>
                                     </div>
                                 </div>

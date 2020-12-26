@@ -16,6 +16,7 @@
             //…
         });
     </script>
+    <script src="./js/modules/ice-wine-stock-manager.js"></script>
     <script>
         //Demo
         layui.use('form', function () {
@@ -23,7 +24,7 @@
 
             //监听提交
             form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                iceWineStockManage(data.field);
                 return false;
             });
         });
@@ -97,21 +98,21 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">存放位置</label>
                                     <div class="layui-input-block">
-                                        <select name="city" lay-verify="required">
+                                        <select name="stockLocation" lay-verify="required">
                                             <option value=""></option>
                                             <option value="0">货架A</option>
                                             <option value="1">货架B</option>
@@ -122,7 +123,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">库存状态</label>
                                     <div class="layui-input-block">
-                                        <select name="city" lay-verify="required">
+                                        <select name="stockStatus" lay-verify="required">
                                             <option value=""></option>
                                             <option value="0">状态1</option>
                                             <option value="1">状态2</option>
@@ -133,14 +134,14 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">操作方式</label>
                                     <div class="layui-input-block">
-                                      <input type="radio" name="stock" value="出库" title="出库">
-                                      <input type="radio" name="stock" value="入库" title="入库" checked>
+                                      <input type="radio" name="stock_way" value="出库" title="出库">
+                                      <input type="radio" name="stock_way" value="入库" title="入库" checked>
                                     </div>
                                   </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">操作数量</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="operate_amount" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>

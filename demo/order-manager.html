@@ -16,19 +16,33 @@
             //…
         });
     </script>
+    <script src="./js/modules/order-manager.js"></script>
     <script>
         //Demo
         layui.use('form', function () {
             var form = layui.form;
 
             //监听提交
-            form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+            form.on('submit(addOrderForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                addOrder(data.field);
                 return false;
             });
+
+            form.on('submit(updateOrderForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                orderUpdate(1, data.field);
+                return false;
+            });
+
+            form.on('submit(deleteOrderForm)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                deleteDataById("order", data.field.ordernumber);
+                return false;
+            });
+            
         });
     </script>
-
 
 </head>
 
@@ -99,69 +113,55 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
-                                            autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">订单日期</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="ordernumber" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单状态</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="orderstatus" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">客户编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">是否送货</label>
                                     <div class="layui-input-block">
-                                      <input type="radio" name="deliver" value="是" title="是" checked>
-                                      <input type="radio" name="deliver" value="否" title="否">
+                                      <input type="radio" name="deliveryjudge" value="是" title="是" checked>
+                                      <input type="radio" name="deliveryjudge" value="否" title="否">
                                     </div>
                                   </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">送货地址</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="deliveryLocation" required lay-verify="" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">配送距离</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
-                                            autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">订单金额</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="deliveryDistance" required lay-verify="" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button class="layui-btn" lay-submit lay-filter="addOrderForm">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
@@ -206,74 +206,74 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="ordernumber" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单日期</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="orderdate" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单状态</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="orderstatus" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">客户编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="CusId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">是否送货</label>
                                     <div class="layui-input-block">
-                                      <input type="radio" name="deliver" value="是" title="是" checked>
-                                      <input type="radio" name="deliver" value="否" title="否">
+                                      <input type="radio" name="deliveryjudge" value="是" title="是" checked>
+                                      <input type="radio" name="deliveryjudge" value="否" title="否">
                                     </div>
-                                  </div>
+                                </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">送货地址</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="deliveryLocation" required lay-verify="" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">配送距离</label>
+                                    <label class="layui-form-label">送货时间</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="deliverytime" required lay-verify="" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单金额</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required" placeholder=""
+                                        <input type="text" name="deliveryamount" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-row layui-input-block">
                                         <div class="layui-col-md9">
-                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                                            <button class="layui-btn" lay-submit lay-filter="updateOrderForm">立即修改</button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
                                         <div class="layui-col-md3 ">
-                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">删除该订单</button>
+                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="deleteOrderForm">删除该订单</button>
                                         </div>
                                     </div>
                                 </div>

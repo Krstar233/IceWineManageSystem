@@ -1,603 +1,81 @@
-var type = "";
-var word = "";
+document.write("<script language='javascript' src='./js/modules/config.js'></script>");
 
-layui.use('table', function(){
-    var table = layui.table;
-    //第一个实例
-    table.render({
-      elem: '#demo'
-      ,cellMinWidth: 100
-      //,url: "##" //数据接口
-      ,page: true //开启分页
-      ,cols: [[ //表头
-        {field: 'wineId', title: '酒品编号', sort: true}
-        ,{field: 'wineName', title: '酒品名称', sort: true}
-        ,{field: 'wineType', title: '酒品类型', sort: true}
-        ,{field: 'stockAmount', title: '库存', sort: true}
-        ,{field: 'wineOrigin', title: '产地产区'} 
-        ,{field: 'wineProductDate', title: '生产日期', sort: true}
-        ,{field: 'winePurchasePrice', title: '进购价格', sort: true}
-        ,{field: 'wineBasicSalePrice', title: '基础售价', sort: true}
-        ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
-        ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
-        ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
-      ]]
-      ,data: [{
-        "wineId": "00001",
-        "wineName": "杜康",
-        "wineType": "白冰酒",
-        "stockAmount": "100",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00002",
-        "wineName": "般若汤",
-        "wineType": "辣冰酒",
-        "stockAmount": "101",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00003",
-        "wineName": "杯中物",
-        "wineType": "辣冰酒",
-        "stockAmount": "102",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200611",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00004",
-        "wineName": "流霞",
-        "wineType": "辣冰酒",
-        "stockAmount": "103",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200611",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00005",
-        "wineName": "霞液",
-        "wineType": "辣冰酒",
-        "stockAmount": "104",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200611",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00006",
-        "wineName": "忘忧物",
-        "wineType": "红冰酒",
-        "stockAmount": "105",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00007",
-        "wineName": "钓诗钩",
-        "wineType": "红冰酒",
-        "stockAmount": "106",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00008",
-        "wineName": "扫愁帚",
-        "wineType": "红冰酒",
-        "stockAmount": "107",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00009",
-        "wineName": "黄醅",
-        "wineType": "红冰酒",
-        "stockAmount": "108",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00010",
-        "wineName": "香蚁",
-        "wineType": "白冰酒",
-        "stockAmount": "109",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00011",
-        "wineName": "浮蚁",
-        "wineType": "白冰酒",
-        "stockAmount": "110",
-        "wineOrigin": "广东省汕头市",
-        "wineProductDate": "20200814",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00012",
-        "wineName": "椒浆",
-        "wineType": "白冰酒",
-        "stockAmount": "111",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200611",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00013",
-        "wineName": "醇酎",
-        "wineType": "白冰酒",
-        "stockAmount": "112",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200611",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "10"
-    }, {
-        "wineId": "00014",
-        "wineName": "金波",
-        "wineType": "气泡冰酒",
-        "stockAmount": "113",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00015",
-        "wineName": "秬鬯",
-        "wineType": "白冰酒",
-        "stockAmount": "114",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00016",
-        "wineName": "白堕",
-        "wineType": "白冰酒",
-        "stockAmount": "115",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00017",
-        "wineName": "冻醪",
-        "wineType": "红冰酒",
-        "stockAmount": "116",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00018",
-        "wineName": "壶觞",
-        "wineType": "气泡冰酒",
-        "stockAmount": "117",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00019",
-        "wineName": "壶中物",
-        "wineType": "气泡冰酒",
-        "stockAmount": "118",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00020",
-        "wineName": "威代尔",
-        "wineType": "气泡冰酒",
-        "stockAmount": "119",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00021",
-        "wineName": "品丽珠",
-        "wineType": "气泡冰酒",
-        "stockAmount": "0",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00022",
-        "wineName": "雷司令",
-        "wineType": "红冰酒",
-        "stockAmount": "41",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00023",
-        "wineName": "琼瑶浆",
-        "wineType": "红冰酒",
-        "stockAmount": "42",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00024",
-        "wineName": "霞多丽",
-        "wineType": "红冰酒",
-        "stockAmount": "43",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "10",
-        "wineBasicSalePrice": "20",
-        "wineCapacity": "500ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00025",
-        "wineName": "梅乐",
-        "wineType": "红冰酒",
-        "stockAmount": "44",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20201020",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00026",
-        "wineName": "施埃博",
-        "wineType": "红冰酒",
-        "stockAmount": "45",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "12"
-    }, {
-        "wineId": "00027",
-        "wineName": "穆思卡得",
-        "wineType": "辣冰酒",
-        "stockAmount": "46",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00028",
-        "wineName": "米勒",
-        "wineType": "辣冰酒",
-        "stockAmount": "47",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00029",
-        "wineName": "奥特加",
-        "wineType": "白冰酒",
-        "stockAmount": "48",
-        "wineOrigin": "江西省景德镇市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00030",
-        "wineName": "白比诺",
-        "wineType": "白冰酒",
-        "stockAmount": "49",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00031",
-        "wineName": "灰比诺",
-        "wineType": "白冰酒",
-        "stockAmount": "50",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "8",
-        "wineBasicSalePrice": "15",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00032",
-        "wineName": "五女山",
-        "wineType": "白冰酒",
-        "stockAmount": "51",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00033",
-        "wineName": "张裕",
-        "wineType": "白冰酒",
-        "stockAmount": "52",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "450ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00034",
-        "wineName": "莫高",
-        "wineType": "气泡冰酒",
-        "stockAmount": "53",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00035",
-        "wineName": "维格那",
-        "wineType": "气泡冰酒",
-        "stockAmount": "54",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00036",
-        "wineName": "王城",
-        "wineType": "气泡冰酒",
-        "stockAmount": "320",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "13"
-    }, {
-        "wineId": "00037",
-        "wineName": "桓龙湖",
-        "wineType": "红冰酒",
-        "stockAmount": "321",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00038",
-        "wineName": "黑塔丽瓦娜",
-        "wineType": "红冰酒",
-        "stockAmount": "322",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00039",
-        "wineName": "路易",
-        "wineType": "红冰酒",
-        "stockAmount": "323",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00040",
-        "wineName": "罗曼蒂克",
-        "wineType": "红冰酒",
-        "stockAmount": "324",
-        "wineOrigin": "福建省福州市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00041",
-        "wineName": "柏雅",
-        "wineType": "红冰酒",
-        "stockAmount": "325",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200930",
-        "winePurchasePrice": "30",
-        "wineBasicSalePrice": "60",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00042",
-        "wineName": "麦卡伦",
-        "wineType": "红冰酒",
-        "stockAmount": "326",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00043",
-        "wineName": "雪莉",
-        "wineType": "白冰酒",
-        "stockAmount": "327",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00044",
-        "wineName": "1824大师",
-        "wineType": "白冰酒",
-        "stockAmount": "328",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00045",
-        "wineName": "红诺雪",
-        "wineType": "辣冰酒",
-        "stockAmount": "0",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00046",
-        "wineName": "白诺雪",
-        "wineType": "白冰酒",
-        "stockAmount": "330",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00047",
-        "wineName": "黑诺雪",
-        "wineType": "白冰酒",
-        "stockAmount": "331",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00048",
-        "wineName": "碧诺雪",
-        "wineType": "白冰酒",
-        "stockAmount": "332",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00049",
-        "wineName": "可乐桶",
-        "wineType": "白冰酒",
-        "stockAmount": "333",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }, {
-        "wineId": "00050",
-        "wineName": "科罗微",
-        "wineType": "白冰酒",
-        "stockAmount": "334",
-        "wineOrigin": "山东省青岛市",
-        "wineProductDate": "20200815",
-        "winePurchasePrice": "45",
-        "wineBasicSalePrice": "99",
-        "wineCapacity": "300ml",
-        "wineAlcoholDegree": "17"
-    }]
-    });
-
-    //监听行工具事件
-    table.on('tool(test)', function(obj){
-        var data = obj.data;
-        //console.log(obj)
-        if(obj.event === 'del'){
-        layer.confirm('真的删除行么', function(index){
-            // ***************删除行********************
-            obj.del();
-            console.log('操作：删除行' + JSON.stringify(obj.data));
-            layer.close(index);
-            //******************************************
+function updateTable(type, word){
+    layui.use('table', function(){
+        var table = layui.table;
+        //第一个实例
+        table.render({
+          elem: '#demo'
+          ,cellMinWidth: 100
+          ,url: baseUrl + "/api/ice-wine-query.php?type="+type+"&word="+word//数据接口
+          ,page: true //开启分页
+          ,cols: [[ //表头
+            {field: 'wineId', title: '酒品编号', sort: true}
+            ,{field: 'wineName', title: '酒品名称', sort: true}
+            ,{field: 'wineType', title: '酒品类型', sort: true}
+            ,{field: 'stockAmount', title: '库存数目', sort: true}
+            ,{field: 'stockLocation', title: '存放位置', sort: true}
+            ,{field: 'stockStatus', title: '库存状态', sort: true}
+            ,{field: 'stockDate', title: '入库日期', sort: true}
+            ,{field: 'wineOrigin', title: '产地产区'} 
+            ,{field: 'wineProductDate', title: '生产日期', sort: true}
+            ,{field: 'winePurchasePrice', title: '进购价格', sort: true}
+            ,{field: 'wineBasicSalePrice', title: '基础售价', sort: true}
+            ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
+            ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
+            ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
+          ]]
         });
-        } else if(obj.event === 'edit'){
-            //***************编辑************** */
-            layer.prompt({
-                formType: 2
-                ,value: JSON.stringify(data,null,'\t')
-            }, function(value, index){
-                console.log('操作：更新行' + JSON.stringify(obj.data));
-                obj.update(JSON.parse(value));
+    
+        //监听行工具事件
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                // ***************删除行********************
+                obj.del();
+                //console.log('操作：删除行' + JSON.stringify(obj.data));
+                deleteDataById("wine", obj.data.wineId);
                 layer.close(index);
-            //******************************* */
+                //******************************************
             });
-        }
+            } else if(obj.event === 'edit'){
+                //***************编辑************** */
+                layer.prompt({
+                    formType: 2
+                    ,value: JSON.stringify(data,null,'\t')
+                }, function(value, index){
+                    //console.log('操作：更新行' + JSON.stringify(obj.data));
+                    $.ajax({
+                        //请求方式
+                        type : "POST",
+                        //请求的媒体类型
+                        contentType: "application/json;charset=UTF-8",
+                        //请求地址
+                        url : baseUrl+"/api/icewine-update.php",
+                        //数据，json字符串
+                        data : {
+                            "data": value
+                        },
+                        //请求成功
+                        success : function(result) {
+                            if (result.code == 0){
+                                layer.msg("更新失败!\n错误信息："+result.msg);
+                            }
+                            console.log(result.msg);
+                        },
+                        //请求失败，包含具体的错误信息
+                        error : function(e){
+                            layer.msg("请求失败!请稍后再试！");
+                        }
+                    });
+                    obj.update(JSON.parse(value));
+                    layer.close(index);
+                //******************************* */
+                });
+            }
+        });
     });
-  });
+}
+
