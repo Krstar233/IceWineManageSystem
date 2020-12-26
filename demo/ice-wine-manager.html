@@ -46,6 +46,37 @@
                 deleteDataById("wine", data.field.wineId);
                 return false;
             });
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                // 查询数据
+                var type = parseInt(data.field.type) + 1;
+                var word = data.field.word;
+                $.ajax({
+                    //请求方式
+                    type: "GET",
+                    //请求的媒体类型
+                    contentType: "application/json;charset=UTF-8",
+                    //请求地址
+                    url: baseUrl + "/api/ice-wine-query.php?type="+type+"&word="+word,
+                    //请求成功
+                    success: function (result) {
+                        if (result.code == 0) {
+                            layer.msg("更新失败!\n错误信息：" + result.msg);
+                        }
+                        console.log(result.msg);
+                        //----------------------根据传回的数据填表单----------------------------
+                        //xxxxxxxxxxxx
+                        //---------------------------------------------------------------------
+                    },
+                    //请求失败，包含具体的错误信息
+                    error: function (e) {
+                        layer.msg("请求失败!请稍后再试！");
+                    }
+                });
+                return false;
+            });
         });
     </script>
 

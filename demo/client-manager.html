@@ -7,7 +7,7 @@
     <title>冰酒后台管理</title>
     <link rel="stylesheet" href="./layui-v2.5.7/layui/css/layui.css">
     <script src="./layui-v2.5.7/layui/layui.js"></script>
-    
+
     <script>
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function () {
@@ -42,6 +42,37 @@
                 // layer.msg(JSON.stringify(data.field));
                 // 删除客户信息
                 deleteDataById("client", data.field.CusID);
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                // layer.msg(JSON.stringify(data.field));
+                // 查询数据
+                var type = parseInt(data.field.type) + 1;
+                var word = data.field.word;
+                $.ajax({
+                    //请求方式
+                    type: "GET",
+                    //请求的媒体类型
+                    contentType: "application/json;charset=UTF-8",
+                    //请求地址
+                    url: baseUrl + "/api/client-query.php?type="+type+"&word="+word,
+                    //请求成功
+                    success: function (result) {
+                        if (result.code == 0) {
+                            layer.msg("更新失败!\n错误信息：" + result.msg);
+                        }
+                        console.log(result.msg);
+                        //----------------------根据传回的数据填表单----------------------------
+                        //xxxxxxxxxxxx
+                        //---------------------------------------------------------------------
+                    },
+                    //请求失败，包含具体的错误信息
+                    error: function (e) {
+                        layer.msg("请求失败!请稍后再试！");
+                    }
+                });
                 return false;
             });
         });
@@ -170,7 +201,7 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询关键词</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" required lay-verify="required"
+                                                    <input type="text" name="word" required lay-verify="required"
                                                         placeholder="请输入关键词" autocomplete="off" class="layui-input">
                                                 </div>
                                             </div>
@@ -179,7 +210,7 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询方式</label>
                                                 <div class="layui-input-block">
-                                                    <select name="city" lay-verify="required">
+                                                    <select name="type" lay-verify="required">
                                                         <option value="0">按编号</option>
                                                         <option value="1">按名称</option>
                                                     </select>
@@ -189,7 +220,8 @@
                                         <div class="layui-col-md4">
                                             <div class="layui-form-item">
                                                 <div class="layui-input-block">
-                                                    <button class="layui-btn" lay-submit lay-filter="formDemo">点击查询</button>
+                                                    <button class="layui-btn" lay-submit
+                                                        lay-filter="formDemo">点击查询</button>
                                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                                 </div>
                                             </div>
@@ -243,11 +275,13 @@
                                 <div class="layui-form-item">
                                     <div class="layui-row layui-input-block">
                                         <div class="layui-col-md9">
-                                            <button class="layui-btn" lay-submit lay-filter="updateClientForm">立即修改</button>
+                                            <button class="layui-btn" lay-submit
+                                                lay-filter="updateClientForm">立即修改</button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
                                         <div class="layui-col-md3 ">
-                                            <button class="layui-btn layui-btn-danger" lay-submit lay-filter="deleteClientForm">删除该客户</button>
+                                            <button class="layui-btn layui-btn-danger" lay-submit
+                                                lay-filter="deleteClientForm">删除该客户</button>
                                         </div>
                                     </div>
                                 </div>
