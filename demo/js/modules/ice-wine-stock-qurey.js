@@ -1,3 +1,6 @@
+var type = "";
+var word = "";
+
 layui.use('table', function(){
     var table = layui.table;
     //第一个实例
