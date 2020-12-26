@@ -391,13 +391,16 @@ pre[data-line] .line-highlight[data-end]:after {
         <span class="token string">&quot;wineId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;00001&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x675C;&#x5EB7;&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineType&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x767D;&#x51B0;&#x9152;&quot;</span><span class="token punctuation">,</span>
-        <span class="token string">&quot;stockAmount&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;100&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineOrigin&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x5E7F;&#x4E1C;&#x7701;&#x6C55;&#x5934;&#x5E02;&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineProductDate&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20201020&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;winePurchasePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineBasicSalePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20&quot;</span><span class="token punctuation">,</span>
         <span class="token string">&quot;wineCapacity&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;500ml&quot;</span><span class="token punctuation">,</span>
-        <span class="token string">&quot;wineAlcoholDegree&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;12&quot;</span>
+        <span class="token string">&quot;wineAlcoholDegree&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;12&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockAmount&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;100&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockLocation&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;A01&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockStatus&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;&#x6B63;&#x5E38;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockDate&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;2020-11-30&quot;</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 
@@ -442,7 +445,456 @@ pre[data-line] .line-highlight[data-end]:after {
 
 </pre><p>&#x5176;&#x4F59;&#x5185;&#x5BB9;&#x53C2;&#x8003;&#x63A5;&#x53E3;1</p>
 <hr>
+<p><strong>4. &#x66F4;&#x65B0;&#x8BA2;&#x5355;&#x6570;&#x636E;&#x8868;</strong></p>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD-3">&#x63A5;&#x53E3;&#x529F;&#x80FD;</h6>
 
+<blockquote>
+<p>&#x6DFB;&#x52A0;&#x3001;&#x66F4;&#x6539;&#x8BA2;&#x5355;&#x4FE1;&#x606F;</p>
+</blockquote>
+<h6 class="mume-header" id="%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F-1">&#x652F;&#x6301;&#x683C;&#x5F0F;</h6>
+
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 class="mume-header" id="http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-1">HTTP&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h6>
+
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h6 class="mume-header" id="url-3">URL</h6>
+
+<blockquote>
+<p>/api/order-update.php</p>
+</blockquote>
+<h6 class="mume-header" id="%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0-1">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;</th>
+<th style="text-align:left">&#x5FC5;&#x9009;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">int</td>
+<td>&#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x3002;0.&#x6DFB;&#x52A0;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#xFF1B;1&#xFF1A;&#x66F4;&#x65B0;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#xFF1B;</td>
+</tr>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">json&#x6570;&#x7EC4;</td>
+<td>&#x8BA2;&#x5355;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5-1">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x3002;0&#xFF1A;&#x6B63;&#x5E38;&#xFF1B;1&#xFF1A;&#x9519;&#x8BEF;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x4E9B;&#x6D88;&#x606F;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B-3">&#x63A5;&#x53E3;&#x793A;&#x4F8B;</h6>
+
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8BF7;&#x6C42;&#xFF1A;
+<span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;ordernumber&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span> <span class="token comment">//&#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
+        <span class="token string">&quot;orderdate&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20201201&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;orderstatus&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x5DF2;&#x5B8C;&#x6210;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;CusType&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x4E2A;&#x4EBA;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;CusId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10001&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;00010&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;commodityinfo&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x9999;&#x8681;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;deliveryjudge&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x662F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;orderamount&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;50&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;deliveryLocation&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x6DF1;&#x5733;&#x5E02;&#x5357;&#x5C71;&#x533A;&#x7B2C;&#x4E00;&#x8857;&#x9053;xx&#x5C0F;&#x533A;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;deliverytime&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20201201&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;deliveryamount&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8FD4;&#x56DE;&#xFF1A;
+<span class="token punctuation">{</span>
+    code<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    msg<span class="token punctuation">:</span> <span class="token string">&quot;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x6210;&#x529F;&#xFF01;&quot;</span>
+<span class="token punctuation">}</span>
+
+</pre><hr>
+<p><strong>5. &#x66F4;&#x65B0;&#x5BA2;&#x6237;&#x6570;&#x636E;&#x8868;</strong></p>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD-4">&#x63A5;&#x53E3;&#x529F;&#x80FD;</h6>
+
+<blockquote>
+<p>&#x6DFB;&#x52A0;&#x3001;&#x66F4;&#x6539;&#x5BA2;&#x6237;&#x4FE1;&#x606F;</p>
+</blockquote>
+<h6 class="mume-header" id="%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F-2">&#x652F;&#x6301;&#x683C;&#x5F0F;</h6>
+
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 class="mume-header" id="http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-2">HTTP&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h6>
+
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h6 class="mume-header" id="url-4">URL</h6>
+
+<blockquote>
+<p>/api/client-update.php</p>
+</blockquote>
+<h6 class="mume-header" id="%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0-2">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;</th>
+<th style="text-align:left">&#x5FC5;&#x9009;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">int</td>
+<td>&#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x3002;0.&#x6DFB;&#x52A0;&#x4FE1;&#x606F;&#xFF1B;1&#xFF1A;&#x66F4;&#x65B0;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">json&#x6570;&#x7EC4;</td>
+<td>&#x9700;&#x8981;&#x66F4;&#x65B0;/&#x6DFB;&#x52A0;&#x7684;&#x5BA2;&#x6237;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5-2">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x3002;0&#xFF1A;&#x6B63;&#x5E38;&#xFF1B;1&#xFF1A;&#x9519;&#x8BEF;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x4E9B;&#x6D88;&#x606F;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B-4">&#x63A5;&#x53E3;&#x793A;&#x4F8B;</h6>
+
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8BF7;&#x6C42;&#xFF1A;
+<span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token string">&quot;CusName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Krits&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;CusID&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10001&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;CusType&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x4E2A;&#x4EBA;&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;CusTel&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;400840820&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;CusAddr&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x6DF1;&#x5733;&#x5E02;&#x5357;&#x5C71;&#x533A;&#x7B2C;&#x4E00;&#x8857;&#x9053;xx&#x5C0F;&#x533A;&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;CusCost&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;50&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8FD4;&#x56DE;&#xFF1A;
+<span class="token punctuation">{</span>
+    code<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    msg<span class="token punctuation">:</span> <span class="token string">&quot;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF01;&quot;</span>
+<span class="token punctuation">}</span>
+
+</pre><hr>
+<p><strong>6. &#x66F4;&#x65B0;&#x51B0;&#x9152;&#x4FE1;&#x606F;</strong></p>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD-5">&#x63A5;&#x53E3;&#x529F;&#x80FD;</h6>
+
+<blockquote>
+<p>&#x66F4;&#x6539;&#x51B0;&#x9152;&#x4FE1;&#x606F;</p>
+</blockquote>
+<h6 class="mume-header" id="%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F-3">&#x652F;&#x6301;&#x683C;&#x5F0F;</h6>
+
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 class="mume-header" id="http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-3">HTTP&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h6>
+
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h6 class="mume-header" id="url-5">URL</h6>
+
+<blockquote>
+<p>/api/icewine-update.php</p>
+</blockquote>
+<h6 class="mume-header" id="%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0-3">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;</th>
+<th style="text-align:left">&#x5FC5;&#x9009;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">json&#x6570;&#x7EC4;</td>
+<td>&#x9700;&#x8981;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5-3">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x3002;0&#xFF1A;&#x6B63;&#x5E38;&#xFF1B;1&#xFF1A;&#x9519;&#x8BEF;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x4E9B;&#x6D88;&#x606F;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B-5">&#x63A5;&#x53E3;&#x793A;&#x4F8B;</h6>
+
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8BF7;&#x6C42;&#xFF1A;
+<span class="token punctuation">{</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;wineId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;00001&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x675C;&#x5EB7;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineType&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x767D;&#x51B0;&#x9152;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineOrigin&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x5E7F;&#x4E1C;&#x7701;&#x6C55;&#x5934;&#x5E02;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineProductDate&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20201020&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;winePurchasePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineBasicSalePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineCapacity&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;500ml&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineAlcoholDegree&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;12&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockAmount&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;100&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockLocation&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;A01&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockStatus&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;&#x6B63;&#x5E38;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;stockDate&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;2020-11-30&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8FD4;&#x56DE;&#xFF1A;
+<span class="token punctuation">{</span>
+    code<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    msg<span class="token punctuation">:</span> <span class="token string">&quot;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF01;&quot;</span>
+<span class="token punctuation">}</span>
+
+</pre><hr>
+<p><strong>7. &#x6DFB;&#x52A0;&#x51B0;&#x9152;&#x79CD;&#x7C7B;</strong></p>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD-6">&#x63A5;&#x53E3;&#x529F;&#x80FD;</h6>
+
+<blockquote>
+<p>&#x6DFB;&#x52A0;&#x51B0;&#x9152;&#x79CD;&#x7C7B;</p>
+</blockquote>
+<h6 class="mume-header" id="%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F-4">&#x652F;&#x6301;&#x683C;&#x5F0F;</h6>
+
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 class="mume-header" id="http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-4">HTTP&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h6>
+
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h6 class="mume-header" id="url-6">URL</h6>
+
+<blockquote>
+<p>/api/icewine-add.php</p>
+</blockquote>
+<h6 class="mume-header" id="%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0-4">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;</th>
+<th style="text-align:left">&#x5FC5;&#x9009;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">json&#x6570;&#x7EC4;</td>
+<td>&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x7684;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5-4">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x3002;0&#xFF1A;&#x6B63;&#x5E38;&#xFF1B;1&#xFF1A;&#x9519;&#x8BEF;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x4E9B;&#x6D88;&#x606F;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B-6">&#x63A5;&#x53E3;&#x793A;&#x4F8B;</h6>
+
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8BF7;&#x6C42;&#xFF1A;
+<span class="token punctuation">{</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;wineId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;00001&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x675C;&#x5EB7;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineType&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x767D;&#x51B0;&#x9152;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineOrigin&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&#x5E7F;&#x4E1C;&#x7701;&#x6C55;&#x5934;&#x5E02;&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineProductDate&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20201020&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;winePurchasePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;10&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineBasicSalePrice&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;20&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineCapacity&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;500ml&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;wineAlcoholDegree&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;12&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8FD4;&#x56DE;&#xFF1A;
+<span class="token punctuation">{</span>
+    code<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    msg<span class="token punctuation">:</span> <span class="token string">&quot;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF01;&quot;</span>
+<span class="token punctuation">}</span>
+
+</pre><hr>
+<p><strong>8. &#x6839;&#x636E;id&#x5220;&#x9664;&#x76F8;&#x5E94;&#x9879;&#x76EE;</strong></p>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD-7">&#x63A5;&#x53E3;&#x529F;&#x80FD;</h6>
+
+<blockquote>
+<p>&#x6839;&#x636E;id&#x5220;&#x9664;&#x76F8;&#x5E94;&#x9879;&#x76EE;</p>
+</blockquote>
+<h6 class="mume-header" id="%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F-5">&#x652F;&#x6301;&#x683C;&#x5F0F;</h6>
+
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 class="mume-header" id="http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-5">HTTP&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h6>
+
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h6 class="mume-header" id="url-7">URL</h6>
+
+<blockquote>
+<p>/api/delete_data.php</p>
+</blockquote>
+<h6 class="mume-header" id="%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0-5">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;</th>
+<th style="text-align:left">&#x5FC5;&#x9009;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">string</td>
+<td>&#x9700;&#x8981;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#x79CD;&#x7C7B;&#xFF1A;&quot;wine&quot;:&#x5220;&#x9664;&#x8BE5;&#x79CD;&#x51B0;&#x9152;&#x5E76;&#x4ECE;&#x5E93;&#x5B58;&#x4E2D;&#x53BB;&#x9664;&#xFF1B;&quot;order&quot;:&#x5220;&#x9664;&#x8BE5;&#x8BA2;&#x5355;&#xFF1B;&quot;client&quot;:&#x5220;&#x9664;&#x8BE5;&#x5BA2;&#x6237;</td>
+</tr>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">string</td>
+<td>&#x9700;&#x8981;&#x5220;&#x9664;&#x6570;&#x636E;&#x7684;&#x76F8;&#x5E94;&#x7684;id&#x53F7;&#xFF08;&#x51B0;&#x9152;&#x7F16;&#x53F7;&#x3001;&#x5BA2;&#x6237;&#x7F16;&#x53F7;&#x3001;&#x8BA2;&#x5355;&#x7F16;&#x53F7;&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5-5">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</h6>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x3002;0&#xFF1A;&#x6B63;&#x5E38;&#xFF1B;1&#xFF1A;&#x9519;&#x8BEF;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x4E9B;&#x6D88;&#x606F;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<h6 class="mume-header" id="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B-7">&#x63A5;&#x53E3;&#x793A;&#x4F8B;</h6>
+
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8BF7;&#x6C42;&#xFF1A;
+<span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">&quot;wine&quot;</span><span class="token punctuation">,</span>
+    id<span class="token punctuation">:</span> <span class="token string">&quot;00001&quot;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="javascript" class="language-javascript">&#x8FD4;&#x56DE;&#xFF1A;
+<span class="token punctuation">{</span>
+    code<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    msg<span class="token punctuation">:</span> <span class="token string">&quot;&#x6570;&#x636E;&#x5220;&#x9664;&#x6210;&#x529F;&#xFF01;&quot;</span>
+<span class="token punctuation">}</span>
+
+</pre>
       </div>
       
       
