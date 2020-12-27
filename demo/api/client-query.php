@@ -33,17 +33,19 @@ if(!isset($_GET['type'])||!isset($_GET['word'])) {
     );
 }
 else if($_GET['type']=='null'||$_GET['word']=='null'||$_GET['type']==''||$_GET['word']=='')
-{$output = array(
+{
+    $output = array(
     'code' => 0,
     'msg' =>'',
     'count' => 0,
     'data' =>''
-);}
+    );
+}
 else if(isset($_GET['type'])&&isset($_GET['word'])){
 if($_GET['type']==1)
-{$ID=$_GET['word'];   $sql="select *from client where CusID=$ID";}
+{$ID=$_GET['word'];   $sql="select *from client where CusID = $ID";}
 if($_GET['type']==2)
-{$name=$_GET['word'];   $sql="select *from client where CusName='$name'";}
+{$name=$_GET['word'];  $sql="select *from client where CusName like'%$name%'";}
 
 //wqeyu
 $result = mysqli_query($con,$sql);
@@ -70,6 +72,6 @@ $output = array(
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 
 
-mysqli_close($con);
+//mysqli_close($con);
 
 ?>
