@@ -23,8 +23,54 @@
             var form = layui.form;
 
             //监听提交
-            form.on('submit(formDemo)', function (data) {
+            form.on('submit(updateWineStock)', function (data) {
                 iceWineStockManage(data.field);
+                return false;
+            });
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                var type = parseInt(data.field.type) + 1;
+                var word = data.field.word;
+                $.ajax({
+                    //请求方式
+                    type: "GET",
+                    //请求的媒体类型
+                    contentType: "application/json;charset=UTF-8",
+                    //请求地址
+                    url: baseUrl + "/api/clientquery.php?type="+type+"&word="+word,
+                    //请求成功
+                    success: function (result) {
+                        if (result.code == 0) {
+                            layer.msg("更新失败!\n错误信息：" + result.msg);
+                        }
+                        console.log(result.msg);
+                        //----------------------根据传回的数据填表单----------------------------
+                        document.getElementById('CusName').value = result.data.CusName;
+                        document.getElementById('CusID').value = result.data.CusID;
+                        document.getElementById('CusType').value = result.data.CusType;
+                        document.getElementById('CusTel').value = result.data.CusTel;
+                        document.getElementById('CusAddr').value = result.data.CusAddr;
+                        document.getElementById('CusCost').value = result.data.CusCost;
+                        //---------------------------------------------------------------------
+                    },
+                    //请求失败，包含具体的错误信息
+                    error: function (e) {
+                        layer.msg("请求失败!请稍后再试！");
+
+                        document.getElementById('wineId').value = "test";
+                        document.getElementById('wineName').value = "test";
+                        document.getElementById('operate_amount').value = "test";
+                        document.getElementById('stockLocation').value = "2";
+                        document.getElementById('stockStatus').value = "2";
+                        document.getElementById('stock_way1').checked = true;
+
+                        layui.use('form', function() {
+                            var form = layui.form;
+                            form.render();
+                        });
+                    }
+                });
                 return false;
             });
         });
@@ -97,21 +143,21 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒编号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="wineId" required lay-verify="required" placeholder=""
+                                        <input id="wineId" type="text" name="wineId" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">冰酒名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="wineName" required lay-verify="required" placeholder=""
+                                        <input id="wineName" type="text" name="wineName" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">存放位置</label>
                                     <div class="layui-input-block">
-                                        <select name="stockLocation" lay-verify="required">
+                                        <select id="stockLocation" name="stockLocation" lay-verify="required">
                                             <option value=""></option>
                                             <option value="0">货架A</option>
                                             <option value="1">货架B</option>
@@ -122,7 +168,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">库存状态</label>
                                     <div class="layui-input-block">
-                                        <select name="stockStatus" lay-verify="required">
+                                        <select id="stockStatus" name="stockStatus" lay-verify="required">
                                             <option value=""></option>
                                             <option value="0">状态1</option>
                                             <option value="1">状态2</option>
@@ -133,20 +179,20 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">操作方式</label>
                                     <div class="layui-input-block">
-                                      <input type="radio" name="stock_way" value="出库" title="出库">
-                                      <input type="radio" name="stock_way" value="入库" title="入库" checked>
+                                      <input id="stock_way1" type="radio" name="stock_way" value="出库" title="出库">
+                                      <input id="stock_way2" type="radio" name="stock_way" value="入库" title="入库" checked>
                                     </div>
                                   </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">操作数量</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="operate_amount" required lay-verify="required" placeholder=""
+                                        <input id="operate_amount" type="text" name="operate_amount" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button class="layui-btn" lay-submit lay-filter="updateWineStock">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>

@@ -68,17 +68,16 @@
                         console.log(result.msg);
                         //----------------------根据传回的数据填表单----------------------------
                         
-                        document.getElementById('wineId').value = "test";
-                        document.getElementById('wineName').value = "test";
-                        document.getElementById('wineType').value = "test";
-                        document.getElementById('wineOrigin').value = "test";
-                        document.getElementById('wineProductDate').value = "test";
-                        document.getElementById('winePurchasePrice').value = "xxtestxx";
-                        document.getElementById('wineBasicSalePrice').value = "test";
-                        document.getElementById('wineCapacity').value = "test";
-                        document.getElementById('wineAlcoholDegree').value = "test";
-
-
+                        document.getElementById('wineId').value = result.data.wineId;
+                        document.getElementById('wineName').value = result.data.wineName;
+                        document.getElementById('wineType').value = result.data.wineType;
+                        document.getElementById('wineOrigin').value = result.data.wineOrigin;
+                        document.getElementById('wineProductDate').value = result.data.wineProductDate;
+                        document.getElementById('winePurchasePrice').value = result.data.winePurchasePrice;
+                        document.getElementById('wineBasicSalePrice').value = result.data.wineBasicSalePrice;
+                        document.getElementById('wineCapacity').value = result.data.wineCapacity;
+                        document.getElementById('wineAlcoholDegree').value = result.data.wineAlcoholDegree;
+                        
                         //---------------------------------------------------------------------
                     },
                     //请求失败，包含具体的错误信息
