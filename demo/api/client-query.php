@@ -32,7 +32,7 @@ if(!isset($_GET['type'])||!isset($_GET['word'])) {
         'data' => $arr
     );
 }
-if(isset($_GET['type'])==null||isset($_GET['word'])==null)
+if(isset($_GET['type'])=='null'||isset($_GET['word'])=='null')
 {$output = array(
     'code' => 0,
     'msg' =>'',
