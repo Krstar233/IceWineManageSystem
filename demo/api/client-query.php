@@ -32,14 +32,14 @@ if(!isset($_GET['type'])||!isset($_GET['word'])) {
         'data' => $arr
     );
 }
-if(isset($_GET['type'])=='null'||isset($_GET['word'])=='null')
+else if($_GET['type']=='null'||$_GET['word']=='null'||$_GET['type']==''||$_GET['word']=='')
 {$output = array(
     'code' => 0,
     'msg' =>'',
     'count' => 0,
     'data' =>''
 );}
-if(isset($_GET['type'])&&isset($_GET['word'])){
+else if(isset($_GET['type'])&&isset($_GET['word'])){
 if($_GET['type']==1)
 {$ID=$_GET['word'];   $sql="select *from client where CusID=$ID";}
 if($_GET['type']==2)
