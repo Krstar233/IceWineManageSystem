@@ -45,6 +45,7 @@ if($_GET['type']==0)
 if($_GET['type']==1)
 {$name=$_GET['word'];   $sql="select *from client where CusName='$name'";}
 
+//wqeyu
 $result = mysqli_query($con,$sql);
 $count=mysqli_num_rows($result);
 $arr = array();
