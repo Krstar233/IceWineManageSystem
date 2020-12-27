@@ -38,11 +38,12 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $output = array(
-    'code' => 1,
+    'code' => 0,
     'msg' => '',
     'count' => $count,
     'data' => $arr
 );
+// $output = $arr;
 //print_r($arr);
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 
