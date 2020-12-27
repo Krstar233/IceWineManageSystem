@@ -40,9 +40,9 @@ if(isset($_GET['type'])=='null'||isset($_GET['word'])=='null')
     'data' =>''
 );}
 if(isset($_GET['type'])&&isset($_GET['word'])){
-if($_GET['type']==0)
-{$ID=$_GET['word'];   $sql="select *from client where CusID=$ID";}
 if($_GET['type']==1)
+{$ID=$_GET['word'];   $sql="select *from client where CusID=$ID";}
+if($_GET['type']==2)
 {$name=$_GET['word'];   $sql="select *from client where CusName='$name'";}
 
 //wqeyu
