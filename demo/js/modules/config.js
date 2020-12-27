@@ -1,6 +1,6 @@
 document.write("<script language='javascript' src='./js/modules/jQuery.js'></script>");
 
-var baseUrl = "";
+var baseUrl = "http://localhost/IceWineManageSystem/demo";
 
 function deleteDataById(type, id){
     $.ajax({
