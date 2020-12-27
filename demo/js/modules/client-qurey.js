@@ -1,12 +1,21 @@
 document.write("<script language='javascript' src='./js/modules/config.js'></script>");
 
 function updateTable(type, word){
+    if (type != null){
+        type = parseInt(type);
+        // console.log("DBUG " + type);
+    }
+    var _url = "";
+    if (type == null || word == null){
+        _url = baseUrl + "/api/client-query.php";
+    }
+    else _url = baseUrl + "/api/client-query.php?type="+ type +"&word="+word;//数据接口
     layui.use('table', function(){
         var table = layui.table;
         table.render({
           elem: '#demo'
           ,cellMinWidth: 100
-          ,url: baseUrl + "/api/client-query.php?type="+type+"&word="+word//数据接口
+          ,url: _url
           ,page: true //开启分页
           ,cols: [[ //表头
             {field: 'CusName', title: '姓名', sort: true}
@@ -58,6 +67,7 @@ function updateTable(type, word){
                     ,value: JSON.stringify(data,null,'\t')
                 }, function(value, index){
                     // console.log('操作：更新行' + JSON.stringify(obj.data));
+                    console.log("DBUG "+ value);
                     $.ajax({
                         //请求方式
                         type : "POST",

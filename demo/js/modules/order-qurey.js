@@ -1,13 +1,17 @@
 document.write("<script language='javascript' src='./js/modules/config.js'></script>");
 
 function updateTable(type, word){
+    var _url = "";
+    if (type == null || word == null){
+        _url = baseUrl + "/api/order-query.php";
+    }
     layui.use('table', function(){
         var table = layui.table;
         //第一个实例
         table.render({
           elem: '#demo'
           ,cellMinWidth: 100
-          ,url: baseUrl + "/api/order-query.php?type="+type+"&word="+word //数据接口
+          ,url: _url
           ,page: true //开启分页
           ,cols: [[ //表头
             {field: 'ordernumber', title: '订单编号', sort: true}
