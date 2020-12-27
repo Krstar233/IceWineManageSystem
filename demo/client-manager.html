@@ -75,6 +75,8 @@
                     },
                     //请求失败，包含具体的错误信息
                     error: function (e) {
+                        layer.msg("请求失败!请稍后再试！");
+                        
                         document.getElementById('CusName').value = "test";
                         document.getElementById('CusID').value = "test";
                         document.getElementById('CusType').value = "test";

@@ -38,7 +38,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $output = array(
-    'code' => 0,
+    'code' => 1,
     'msg' => '',
     'count' => $count,
     'data' => $arr
