@@ -10,18 +10,12 @@ if (!$conn) {
 //mysqli_select_db($conn, "iceman");
 mysqli_set_charset($conn, "utf8");
 
-if (!isset($_POST['data'])) {
-    $output = array(
-        'code' => 0,
-        'msg' => '',
-    );
-}
 
-if (isset($_POST['data'])) {
-    $data=json_decode($_POST['data'],true);
+if (isset($_POST)&&file_get_contents ( 'php://input' )!=null) {
+    $data=json_decode(file_get_contents ( 'php://input' ),true);
     $a=array();$b=array();
 
-    foreach($data as $key=>$value)
+    foreach($data['data'] as $key=>$value)
     { array_push($a,$key);array_push($b,$value);}
 
     $query = 'insert into icewine (';
@@ -37,11 +31,9 @@ if (isset($_POST['data'])) {
     $query = substr($query, 0, strlen($query)-1);
     $query = $query . ')';
 
-    // 执行修改sql
+    // 执行sql
     $res = mysqli_query($conn, $query);
 
-    // 执行修改sql
-    $res = mysqli_query($conn, $query);
     if($res)
         $output = array(
             'code' => 0,
@@ -50,11 +42,16 @@ if (isset($_POST['data'])) {
     else
         $output = array(
             'code' => 1,
-            'msg' => '数据更添加失败',
+            'msg' => '数据添加失败',
         );
 }
-
-
+else  {
+    $output = array(
+        'code' => 0,
+        'msg' => '',
+    );
+}
+echo $query;
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 
 //mysqli_close($conn);
