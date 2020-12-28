@@ -2,16 +2,22 @@
 include("conn.php");
 header("Access-Control-Allow-Origin:*"); //跨域名
 header("Access-Control-Allow-Headers:*");
-header("Content-type:text/html;charset=utf-8");
+// header("Content-type:text/html;charset=utf-8");
+header('Content-type: application/json');
+
+$GLOBALS['HTTP_RAW_POST_DATA'];
+
 if (!$conn) {
     die('Could not connect: ' . mysqli_error($conn));
 }
 mysqli_set_charset($conn, "utf8");
 //http://localhost/IceWineManageSystem/demo/api/delete_data.php
+
 if (!isset($_POST['type'])||!isset($_POST['id'])) {
     $output = array(
         'code' => 0,
         'msg' => '',
+        'debug' => 1
     );
 }
 

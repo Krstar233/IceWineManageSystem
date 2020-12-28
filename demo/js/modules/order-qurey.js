@@ -4,7 +4,7 @@ function updateTable(type, word){
     var _url = "";
     if (type == null || word == null){
         _url = baseUrl + "/api/order-query.php";
-    }
+    }else _url = baseUrl + "/api/order-query.php?type="+ type +"&word="+word;//数据接口
     layui.use('table', function(){
         var table = layui.table;
         //第一个实例

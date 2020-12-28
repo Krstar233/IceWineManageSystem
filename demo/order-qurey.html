@@ -25,11 +25,10 @@
 
             //监听提交
             form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
                 var type = parseInt(data.field.type) + 1;
                 var word = data.field.word;
                 updateTable(type, word);
-                return false;
                 return false;
             });
         });
@@ -104,7 +103,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">查询关键词</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required"
+                                        <input type="text" name="word" required lay-verify="required"
                                             placeholder="请输入关键词" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
@@ -113,10 +112,9 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">查询方式</label>
                                     <div class="layui-input-block">
-                                        <select name="city" lay-verify="required">
+                                        <select name="type" lay-verify="required">
                                             <option value=""></option>
                                             <option value="0">按编号</option>
-                                            <option value="1">按名称</option>
                                         </select>
                                     </div>
                                 </div>

@@ -26,7 +26,7 @@
 
             //监听提交
             form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
                 var type = parseInt(data.field.type) + 1;
                 var word = data.field.word;
                 updateTable(type, word);
