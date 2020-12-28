@@ -13,19 +13,13 @@ if (!$conn) {
 mysqli_set_charset($conn, "utf8");
 //http://localhost/IceWineManageSystem/demo/api/delete_data.php
 
-if (!isset($_POST['type'])||!isset($_POST['id'])) {
-    $output = array(
-        'code' => 0,
-        'msg' => '',
-        'debug' => 1
-    );
-}
-
-else if (isset($_POST['type'])&&isset($_POST['id'])) {
-    $sql = "select column_name FROM INFORMATION_SCHEMA.`KEY_COLUMN_USAGE` WHERE table_name='".$_POST['type']."' AND constraint_name='PRIMARY'";
+ if (isset($_POST)&&file_get_contents ( 'php://input' )!=null) {
+    $data=json_decode(file_get_contents ( 'php://input' ),true);
+    $type=$data['type'];$id=$data['id'];
+    $sql = "select column_name FROM INFORMATION_SCHEMA.`KEY_COLUMN_USAGE` WHERE table_name='".$type."' AND constraint_name='PRIMARY'";
     $result = mysqli_query($conn, $sql);
     $primaryKey = mysqli_fetch_array($result)[0];
-    $query = 'delete from ' . $_POST['type'] . ' where ' . $primaryKey . '=' . $_POST['id'];
+    $query = 'delete from ' . $type . ' where ' . $primaryKey . '=' . $id;
 
 // 执行删除语句
     $res = mysqli_query($conn, $query);
@@ -40,5 +34,11 @@ else if (isset($_POST['type'])&&isset($_POST['id'])) {
             'msg' => '数据删除失败',
         );
 }
+else  {
+     $output = array(
+         'code' => 0,
+         'msg' => '',
+     );
+ }
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 ?>

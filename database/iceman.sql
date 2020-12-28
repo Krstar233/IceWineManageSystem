@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-12-27 08:53:28
+-- 生成日期： 2020-12-28 06:21:48
 -- 服务器版本： 5.7.31
 -- PHP 版本： 7.3.21
 
@@ -55,7 +55,8 @@ INSERT INTO `client` (`CusName`, `CusID`, `CusType`, `CusTel`, `CusAddr`, `CusCo
 ('Steve', '30001', '超市', '454567652', '翻斗大街翻斗花园胖东来超市', '1500'),
 ('Alice', '30002', '超市', '353455345', '翻斗大街翻斗花园国光超市', '546'),
 ('Peter', '30003', '个人', '243534543', '翻斗大街翻斗花园二号楼1012室', '207'),
-('Tony', '30004', '商店', '768786754', '翻斗大街翻斗花园南区超市', '1700');
+('Tony', '30004', '商店', '768786754', '翻斗大街翻斗花园南区超市', '1700'),
+('Krits00', '1001', '个人', '400840820', '深圳市南山区第一街道xx小区', '50');
 
 -- --------------------------------------------------------
 
@@ -146,16 +147,16 @@ INSERT INTO `icewine` (`wineId`, `wineName`, `wineType`, `wineOrigin`, `wineProd
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `ordernumber` int(10) NOT NULL,
-  `orderdate` date NOT NULL,
+  `orderdate` date DEFAULT NULL,
   `orderstatus` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CusType` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CusType` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CusId` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `wineId` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `commodityinfo` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `commodityinfo` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deliveryjudge` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `orderamount` float NOT NULL,
+  `orderamount` float DEFAULT NULL,
   `deliveryLocation` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deliverytime` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deliverytime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deliveryamount` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ordernumber`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -165,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 --
 
 INSERT INTO `orders` (`ordernumber`, `orderdate`, `orderstatus`, `CusType`, `CusId`, `wineId`, `commodityinfo`, `deliveryjudge`, `orderamount`, `deliveryLocation`, `deliverytime`, `deliveryamount`) VALUES
-(1, '2020-12-01', '已完成', '个人', '10001', '10', '香蚁', '是', 50, '翻斗大街翻斗花园二号楼1001室', '20201201', '10'),
+(1, '2020-12-01', '已完成', '个人', '10001', '00010', '香蚁', '是', 50, '深圳市南山区第一街道xx小区', '20201201', '10'),
 (2, '2020-12-01', '已完成', '商店', '10002', '11', '浮蚁', '是', 1000, '翻斗大街翻斗花园西南商店', '20201201', '20'),
 (3, '2020-12-01', '已完成', '超市', '10003', '12', '椒浆', '否', 70, '', '', ''),
 (4, '2020-12-02', '已完成', '超市', '10004', '13', '醇酎', '是', 700, '翻斗大街翻斗花园家乐福超市', '20201202', '40'),

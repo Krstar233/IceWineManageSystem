@@ -10,18 +10,13 @@ if (!$conn) {
 //mysqli_select_db($conn, "iceman");
 mysqli_set_charset($conn, "utf8");
 
-if (!isset($_POST['data'])) {
-    $output = array(
-        'code' => 0,
-        'msg' => '',
-    );
-}
 
-if (isset($_POST['data'])) {
-    $data=json_decode($_POST['data'],true);
+
+if (isset($_POST)&&file_get_contents ( 'php://input' )!=null) {
+    $data=json_decode(file_get_contents ( 'php://input' ),true);
     $a=array();$b=array();
 
-    foreach($data as $key=>$value)            //获取json数组 键/值
+    foreach($data['data'] as $key=>$value)
     { array_push($a,$key);array_push($b,$value);}
 
     $sql = "SELECT stockamount FROM icewine WHERE wineId=$b[0]";//获取冰酒库存量
@@ -51,8 +46,13 @@ if (isset($_POST['data'])) {
             'msg' => '数据更新失败',
         );
 }
-
-
+else  {
+    $output = array(
+        'code' => 0,
+        'msg' => '',
+    );
+}
+//echo $query;
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 
 //mysqli_close($conn);
