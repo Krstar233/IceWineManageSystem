@@ -28,7 +28,26 @@ function updateTable(type, word){
             ,{field: 'wineCapacity', title: '单瓶容量', sort: true}
             ,{field: 'wineAlcoholDegree', title: '酒精度数', sort: true}
             ,{fixed: 'right', title:'操作', toolbar: '#operation-bar', width:120}
-          ]]
+          ]],
+          limits: [5,10,20]  //一页选择显示3,5或10条数据
+          ,limit: 10  //一页显示10条数据
+          ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
+              var result;
+              console.log(this);
+              console.log(JSON.stringify(res));
+              if(this.page.curr){
+                  result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+              }
+              else{
+                  result=res.data.slice(0,this.limit);
+              }
+              return {
+                  "code": res.code, //解析接口状态
+                  "msg": res.msg, //解析提示文本
+                  "count": res.count, //解析数据长度
+                  "data": result //解析数据列表
+              };
+          }
         });
     
         //监听行工具事件
