@@ -39,7 +39,7 @@ function updateTable(type, word){
                 // ***************删除行********************
                 obj.del();
                 //console.log('操作：删除行' + JSON.stringify(obj.data));
-                deleteDataById("order", obj.data.ordernumber);
+                deleteDataById("orders", obj.data.ordernumber);
                 layer.close(index);
                 //******************************************
             });
@@ -50,6 +50,10 @@ function updateTable(type, word){
                     ,value: JSON.stringify(data,null,'\t')
                 }, function(value, index){
                     // console.log('操作：更新行' + JSON.stringify(obj.data));
+
+                    var jsonData = {"type": "1","data": JSON.parse(value)};
+                    var json = JSON.stringify(jsonData);
+
                     $.ajax({
                         //请求方式
                         type : "POST",
@@ -58,16 +62,10 @@ function updateTable(type, word){
                         //请求地址
                         url : baseUrl+"/api/order-update.php",
                         //数据，json字符串
-                        data : {
-                            "type": 1,
-                            "data": value
-                        },
+                        data : json,
                         //请求成功
                         success : function(result) {
-                            if (result.code == 0){
-                                layer.msg("更新失败!\n错误信息："+result.msg);
-                            }
-                            console.log(result.msg);
+                            layer.msg(result.msg);
                         },
                         //请求失败，包含具体的错误信息
                         error : function(e){

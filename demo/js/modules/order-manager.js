@@ -1,6 +1,9 @@
 document.write("<script language='javascript' src='./js/modules/config.js'></script>");
 
 function orderUpdate(update_type, order_data){
+    var jsonData = {"type": update_type, "data": order_data};
+    var json = JSON.stringify(jsonData);
+
     $.ajax({
         //请求方式
         type : "POST",
@@ -9,14 +12,11 @@ function orderUpdate(update_type, order_data){
         //请求地址
         url : baseUrl+"/api/order-update.php",
         //数据，json字符串
-        data : {
-            "type": update_type,
-            "data": order_data
-        },
+        data : json,
         //请求成功
         success : function(result) {
             if (result.code == 0){
-                layer.msg("更新失败!\n错误信息："+ result.msg);
+                layer.msg(result.msg);
             }
             console.log(result.msg);
         },
@@ -28,6 +28,9 @@ function orderUpdate(update_type, order_data){
 }
 
 function addOrder(order_data){
+    var jsonData = {"data": order_data};
+    var json = JSON.stringify(jsonData);
+
     $.ajax({
         //请求方式
         type : "POST",
@@ -36,14 +39,10 @@ function addOrder(order_data){
         //请求地址
         url : baseUrl+"/api/add-order.php",
         //数据，json字符串
-        data : {
-            "data": order_data
-        },
+        data : json,
         //请求成功
         success : function(result) {
-            if (result.code == 0){
-                layer.msg("添加订单失败!\n错误信息："+ result.msg);
-            }
+            layer.msg(result.msg);
             console.log(result.msg);
         },
         //请求失败，包含具体的错误信息

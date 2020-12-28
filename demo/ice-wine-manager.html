@@ -24,15 +24,15 @@
 
             //监听提交
             form.on('submit(addWineForm)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
                 // 添加信息
-                addWine(data);
+                addWine(data.field);
                 return false;
             });
 
             //监听提交
             form.on('submit(updateWineForm)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
                 // 修改信息
                 updateWine(data.field)
                 return false;
@@ -49,7 +49,6 @@
 
             //监听提交
             form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
                 // 查询数据
                 var type = parseInt(data.field.type) + 1;
                 var word = data.field.word;
@@ -62,37 +61,25 @@
                     url: baseUrl + "/api/ice-wine-query.php?type="+type+"&word="+word,
                     //请求成功
                     success: function (result) {
-                        if (result.code == 0) {
-                            layer.msg("更新失败!\n错误信息：" + result.msg);
-                        }
-                        console.log(result.msg);
-                        //----------------------根据传回的数据填表单----------------------------
-                        
-                        document.getElementById('wineId').value = result.data.wineId;
-                        document.getElementById('wineName').value = result.data.wineName;
-                        document.getElementById('wineType').value = result.data.wineType;
-                        document.getElementById('wineOrigin').value = result.data.wineOrigin;
-                        document.getElementById('wineProductDate').value = result.data.wineProductDate;
-                        document.getElementById('winePurchasePrice').value = result.data.winePurchasePrice;
-                        document.getElementById('wineBasicSalePrice').value = result.data.wineBasicSalePrice;
-                        document.getElementById('wineCapacity').value = result.data.wineCapacity;
-                        document.getElementById('wineAlcoholDegree').value = result.data.wineAlcoholDegree;
-
-                        //---------------------------------------------------------------------
+                        if (result.code == 0 && result.data.length > 0) {
+                            layer.msg("查询成功！");
+                            //----------------------根据传回的数据填表单----------------------------
+                            document.getElementById('wineId').value = result.data[0].wineId;
+                            document.getElementById('wineName').value = result.data[0].wineName;
+                            document.getElementById('wineType').value = result.data[0].wineType;
+                            document.getElementById('wineOrigin').value = result.data[0].wineOrigin;
+                            document.getElementById('wineProductDate').value = result.data[0].wineProductDate;
+                            document.getElementById('winePurchasePrice').value = result.data[0].winePurchasePrice;
+                            document.getElementById('wineBasicSalePrice').value = result.data[0].wineBasicSalePrice;
+                            document.getElementById('wineCapacity').value = result.data[0].wineCapacity;
+                            document.getElementById('wineAlcoholDegree').value = result.data[0].wineAlcoholDegree;
+                            //---------------------------------------------------------------------
+                        }else layer.msg("查询失败！");
+                        // console.log(result.msg);
                     },
                     //请求失败，包含具体的错误信息
                     error: function (e) {
                         layer.msg("请求失败!请稍后再试！");
-
-                        // document.getElementById('wineId').value = "test";
-                        // document.getElementById('wineName').value = "test";
-                        // document.getElementById('wineType').value = "test";
-                        // document.getElementById('wineOrigin').value = "test";
-                        // document.getElementById('wineProductDate').value = "test";
-                        // document.getElementById('winePurchasePrice').value = "xxtestxx";
-                        // document.getElementById('wineBasicSalePrice').value = "test";
-                        // document.getElementById('wineCapacity').value = "test";
-                        // document.getElementById('wineAlcoholDegree').value = "test";
                     }
                 });
                 return false;
@@ -246,7 +233,7 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询关键词</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" required lay-verify="required"
+                                                    <input type="text" name="word" required lay-verify="required"
                                                         placeholder="请输入关键词" autocomplete="off" class="layui-input">
                                                 </div>
                                             </div>
@@ -255,7 +242,7 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询方式</label>
                                                 <div class="layui-input-block">
-                                                    <select name="city" lay-verify="required">
+                                                    <select name="type" lay-verify="required">
                                                         <option value="0">按编号</option>
                                                         <option value="1">按名称</option>
                                                     </select>

@@ -31,70 +31,59 @@
 
             form.on('submit(updateOrderForm)', function (data) {
                 // layer.msg(JSON.stringify(data.field));
-                orderUpdate(1, data.field);
+                orderUpdate("1", data.field);
                 return false;
             });
 
             form.on('submit(deleteOrderForm)', function (data) {
                 // layer.msg(JSON.stringify(data.field));
-                deleteDataById("order", data.field.ordernumber);
+                deleteDataById("orders", data.field.ordernumber);
                 return false;
             });
             
             //监听提交
             form.on('submit(formDemo)', function (data) {
-                layer.msg(JSON.stringify(data.field));
+                // layer.msg(JSON.stringify(data.field));
                 // 查询数据
                 var type = parseInt(data.field.type) + 1;
                 var word = data.field.word;
+                var _url = baseUrl + "/api/order-query.php?type="+ type +"&word="+word;//数据接口
                 $.ajax({
                     //请求方式
                     type: "GET",
                     //请求的媒体类型
                     contentType: "application/json;charset=UTF-8",
                     //请求地址
-                    url: baseUrl + "/api//api/order-query.php?type="+type+"&word="+word,
+                    url: _url,
                     //请求成功
                     success: function (result) {
-                        if (result.code == 0) {
-                            layer.msg("更新失败!\n错误信息：" + result.msg);
-                        }
-                        console.log(result.msg);
-                        //----------------------根据传回的数据填表单----------------------------
-                        document.getElementById('ordernumber').value = result.data.ordernumber;
-                        document.getElementById('orderdate').value = result.data.orderdate;
-                        document.getElementById('orderstatus').value = result.data.orderstatus;
-                        document.getElementById('CusId').value = result.data.CusId;
-                        document.getElementById('wineId').value = result.data.wineId;
-                        if (result.data.deliveryjudge == "否"){
-                            document.getElementById('deliveryjudge2').attr("checked");
-                        }
-                        document.getElementById('deliveryjudge').value = result.data.deliveryjudge;
-                        document.getElementById('deliveryLocation').value = result.data.deliveryLocation;
-                        document.getElementById('deliverytime').value = result.data.deliverytime;
-                        document.getElementById('deliveryamount').value = result.data.deliveryamount;
-                        //---------------------------------------------------------------------
+                        if (result.code == 0 && result.data.length > 0) {
+                            layer.msg("查询成功！");
+                            //----------------------根据传回的数据填表单----------------------------
+                            document.getElementById('ordernumber').value = result.data[0].ordernumber;
+                            document.getElementById('orderdate').value = result.data[0].orderdate;
+                            document.getElementById('orderstatus').value = result.data[0].orderstatus;
+                            document.getElementById('CusId').value = result.data[0].CusId;
+                            document.getElementById('wineId').value = result.data[0].wineId;
+                            if (result.data[0].deliveryjudge == "否"){
+                                document.getElementById('deliveryjudge2').checked = true;
+                            }
+                            document.getElementById('deliveryLocation').value = result.data[0].deliveryLocation;
+                            document.getElementById('deliverytime').value = result.data[0].deliverytime;
+                            document.getElementById('orderamount').value = result.data[0].orderamount;
+                            //---------------------------------------------------------------------
+                            layui.use('form', function() {
+                                var form = layui.form;
+                                form.render();
+                            });
+                        }else layer.msg("查询失败！");
+                        
+                        
                     },
                     //请求失败，包含具体的错误信息
                     error: function (e) {
                         layer.msg("请求失败!请稍后再试！");
-                        
-                        document.getElementById('ordernumber').value = 'xx';
-                        document.getElementById('orderdate').value = 'xx';
-                        document.getElementById('orderstatus').value = 'xx';
-                        document.getElementById('CusId').value = 'xx';
-                        document.getElementById('wineId').value = 'xxxxxx';
-                        document.getElementById('deliveryLocation').value = 'xx';
-                        document.getElementById('deliverytime').value = 'xx';
-                        document.getElementById('deliveryamount').value = 'xx';
-                        console.log(document.getElementById('deliveryjudge2').checked);
-                        // document.getElementById('deliveryjudge1').checked = false;
-                        document.getElementById('deliveryjudge2').checked = true;
-
-                        layui.use('form', function() {
-                            var form = layui.form;
-                            form.render();
-                        });
+                    
                     }
                 });
                 return false;
@@ -233,7 +222,7 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询关键词</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" required lay-verify="required"
+                                                    <input type="text" name="word" required lay-verify="required"
                                                         placeholder="请输入关键词" autocomplete="off" class="layui-input">
                                                 </div>
                                             </div>
@@ -242,9 +231,8 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">查询方式</label>
                                                 <div class="layui-input-block">
-                                                    <select name="city" lay-verify="required">
+                                                    <select name="type" lay-verify="required">
                                                         <option value="0">按编号</option>
-                                                        <option value="1">按名称</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -320,7 +308,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">订单金额</label>
                                     <div class="layui-input-block">
-                                        <input id="deliveryamount" type="text" name="deliveryamount" required lay-verify="required" placeholder=""
+                                        <input id="orderamount" type="text" name="orderamount" required lay-verify="required" placeholder=""
                                             autocomplete="off" class="layui-input">
                                     </div>
                                 </div>

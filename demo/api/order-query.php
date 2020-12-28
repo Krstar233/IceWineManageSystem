@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin:*"); //跨域名
 header("Access-Control-Allow-Headers:*");
-header("Content-type:text/html;charset=utf-8");
+header('Content-type: application/json');
 $con = mysqli_connect('localhost', 'root','','iceman');
 if (!$con)
 {

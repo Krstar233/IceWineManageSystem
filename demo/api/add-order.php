@@ -2,7 +2,7 @@
 include("conn.php");
 header("Access-Control-Allow-Origin:*"); //跨域名
 header("Access-Control-Allow-Headers:*");
-header("Content-type:text/html;charset=utf-8");
+header('Content-type: application/json');
 if (!$conn) {
     die('Could not connect: ' . mysqli_error($conn));
 }
@@ -53,7 +53,7 @@ else {
     );
 }
 
-echo$query;
+// echo$query;
 echo json_encode($output, JSON_UNESCAPED_UNICODE);//json编码
 
 //mysqli_close($conn);

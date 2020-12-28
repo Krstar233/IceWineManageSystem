@@ -3,6 +3,10 @@ document.write("<script language='javascript' src='./js/modules/jQuery.js'></scr
 var baseUrl = "http://localhost/IceWineManageSystem/demo";
 
 function deleteDataById(type, id){
+
+    var jsonData = {"type": type,"id": id};
+    var json = JSON.stringify(jsonData);
+
     $.ajax({
         //请求方式
         type : "POST",
@@ -11,16 +15,10 @@ function deleteDataById(type, id){
         //请求地址
         url : baseUrl+"/api/delete_data.php",
         //数据，json字符串
-        data : {
-            "type": type,
-            "id": id
-        },
+        data : json,
         //请求成功
         success : function(result) {
-            if (result.code == 0){
-                layer.msg("数据删除失败!\n错误信息："+result.msg);
-            }
-            console.log(result.msg);
+            layer.msg(result.msg);
         },
         //请求失败，包含具体的错误信息
         error : function(e){

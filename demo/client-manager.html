@@ -25,7 +25,7 @@
             form.on('submit(addClientForm)', function (data) {
                 // layer.msg(JSON.stringify(data.field));
                 // 添加客户信息
-                clientUpdate(0, data.field);
+                clientUpdate("0", data.field);
                 return false;
             });
 
@@ -33,7 +33,7 @@
             form.on('submit(updateClientForm)', function (data) {
                 // layer.msg(JSON.stringify(data.field));
                 // 修改客户信息
-                clientUpdate(1, data.field);
+                clientUpdate("1", data.field);
                 return false;
             });
 
@@ -60,29 +60,22 @@
                     url: baseUrl + "/api/client-query.php?type="+type+"&word="+word,
                     //请求成功
                     success: function (result) {
-                        if (result.code == 0) {
-                            layer.msg("更新失败!\n错误信息：" + result.msg);
+                        if (result.code == 0 && result.data.length > 0) {
+                            layer.msg("查询成功！");
+                            //----------------------根据传回的数据填表单----------------------------
+                            document.getElementById('CusName').value = result.data[0].CusName;
+                            document.getElementById('CusID').value = result.data[0].CusID;
+                            document.getElementById('CusType').value = result.data[0].CusType;
+                            document.getElementById('CusTel').value = result.data[0].CusTel;
+                            document.getElementById('CusAddr').value = result.data[0].CusAddr;
+                            document.getElementById('CusCost').value = result.data[0].CusCost;
+                            //---------------------------------------------------------------------
                         }
-                        console.log(result.msg);
-                        //----------------------根据传回的数据填表单----------------------------
-                        document.getElementById('CusName').value = result.data.CusName;
-                        document.getElementById('CusID').value = result.data.CusID;
-                        document.getElementById('CusType').value = result.data.CusType;
-                        document.getElementById('CusTel').value = result.data.CusTel;
-                        document.getElementById('CusAddr').value = result.data.CusAddr;
-                        document.getElementById('CusCost').value = result.data.CusCost;
-                        //---------------------------------------------------------------------
+                        else layer.msg("查询失败！");
                     },
                     //请求失败，包含具体的错误信息
                     error: function (e) {
                         layer.msg("请求失败!请稍后再试！");
-
-                        document.getElementById('CusName').value = "test";
-                        document.getElementById('CusID').value = "test";
-                        document.getElementById('CusType').value = "test";
-                        document.getElementById('CusTel').value = "test";
-                        document.getElementById('CusAddr').value = "test";
-                        document.getElementById('CusCost').value = "xxtestxx";
                     }
                 });
                 return false;

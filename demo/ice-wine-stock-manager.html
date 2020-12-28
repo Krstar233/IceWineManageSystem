@@ -39,8 +39,20 @@
                     url: baseUrl + "/api/clientquery.php?type="+type+"&word="+word,
                     //请求成功
                     success: function (result) {
-                        if (result.code == 0) {
-                            layer.msg("更新失败!\n错误信息：" + result.msg);
+                        if (result.code == 0 && result.data.length > 0) {
+                            layer.msg("查询成功");
+                            document.getElementById('wineId').value = result.data[0].wineId;
+                            document.getElementById('wineName').value = result.data[0].wineName;
+                            document.getElementById('operate_amount').value = result.data[0].wineId;
+                            ---------------
+                            document.getElementById('stockLocation').value = result.data[0].;
+                            document.getElementById('stockStatus').value = result.data[0].wineId;
+                            document.getElementById('stock_way1').checked = true;
+
+                        layui.use('form', function() {
+                            var form = layui.form;
+                            form.render();
+                        });
                         }
                         console.log(result.msg);
                         //----------------------根据传回的数据填表单----------------------------
@@ -55,18 +67,6 @@
                     //请求失败，包含具体的错误信息
                     error: function (e) {
                         layer.msg("请求失败!请稍后再试！");
-
-                        document.getElementById('wineId').value = "test";
-                        document.getElementById('wineName').value = "test";
-                        document.getElementById('operate_amount').value = "test";
-                        document.getElementById('stockLocation').value = "2";
-                        document.getElementById('stockStatus').value = "2";
-                        document.getElementById('stock_way1').checked = true;
-
-                        layui.use('form', function() {
-                            var form = layui.form;
-                            form.render();
-                        });
                     }
                 });
                 return false;
@@ -205,7 +205,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">查询关键词</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" required lay-verify="required"
+                                        <input type="text" name="word" required lay-verify="required"
                                             placeholder="请输入关键词" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
@@ -214,7 +214,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">查询方式</label>
                                     <div class="layui-input-block">
-                                        <select name="city" lay-verify="required">
+                                        <select name="type" lay-verify="required">
                                             <option value="0">按编号</option>
                                             <option value="1">按名称</option>
                                         </select>
