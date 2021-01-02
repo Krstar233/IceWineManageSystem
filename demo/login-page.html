@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:url(./image/icewine.jpg);font-family: "微软雅黑", sans-serif;}
+
+.login { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -130px 0 0 -130px;
+    width:270px;
+    height:270px;
+}
+
+.login h1 { color:#dddddd; letter-spacing:2px;text-align:center;margin-bottom:20px; }
+input{
+    padding:10px;
+    width:100%;
+    color:rgb(0, 0, 0);
+    margin-bottom:10px;
+    background-color:#dbdbdb;
+    border: 1px solid black;
+    border-radius:6px;
+    letter-spacing:1px;
+}
+
+form button{
+    width:49%;
+    padding:10px;
+    background-color:rgb(230, 127, 68);
+    border:1px solid black;
+    border-radius:6px;
+    cursor:pointer; 
+}                                                                                                                                                  
+</style>
+</head>
+
+<body>
+<div class="headtop"></div>
+<div class="login">
+  <h1>冰酒管理系统</h1>
+  <form action="" method="post">
+    <input type="text" name="user" placeholder="账户名" required="required">
+    <input type="password" name="password" placeholder="密  码" required="required">
+  <button type="submit">
+    <a href="./ice-wine-stock-qurey.html">登录</a>
+  </button>
+  <button type="submit">
+      <a href="./register-page.html">注册</a>
+  </button>
+  </form>
+</div>
+</body>
+
+</html>
