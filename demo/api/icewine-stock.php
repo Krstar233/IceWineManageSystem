@@ -23,14 +23,14 @@ if (isset($_POST)&&file_get_contents ( 'php://input' )!=null) {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
     $amount = $row[0];
-
-    if($b[4]=='入库')     $amount+=$b[5];
-    if($b[4]=='出库')     $amount=$amount-$b[5];
-
     $query = 'update icewine set stockamount=';
+    if($b[4]=='入库')     $amount+=$b[5];
+    if($b[4]=='出库')    {$zb=$amount-$b[5]; $amount=$amount-$b[5];}
+    if($amount>=0){
+    //$query = 'update icewine set stockamount=';
     $query = $query . $amount ;                   //库存数量更改
     $query = $query . ' where ' . $a[0] . '=' . $b[0];
-
+    }
     //$query = $query . ' where ' . $primaryKeyName . '=' . $primaryKeyValue;
 
     // 执行修改sql
@@ -40,6 +40,12 @@ if (isset($_POST)&&file_get_contents ( 'php://input' )!=null) {
             'code' => 0,
             'msg' => '数据更新成功',
         );
+    else if($zb<0){
+        $output = array(
+            'code' => 1,
+            'msg' => '数据更新失败,库存量不足',
+        );
+    }
     else
         $output = array(
             'code' => 1,
